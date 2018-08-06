@@ -1,6 +1,6 @@
 package com.yrwan11.java;
 
-//匿名内部类 
+//匿名内部类
 interface Anonymous {
 	public double getPrice();
 
