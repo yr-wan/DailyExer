@@ -8,16 +8,6 @@ import java.util.Scanner;
  * 如果当月出现某个Employee对象的生日，则将该雇员的工资增加100元。
  * 
  * 实验目的：对象、继承、封装、多态、抽象类的组合应用。
- * 
- * 提示：
- * 	//定义People类型的数组
- * 		People c1[]=new People[10];
- * 	//数组元素赋值
- * 		c1[0]=new People("John","0001",20);
- * 		c1[1]=new People("Bob","0002",19);
- * 	//若People有两个子类Student和Officer，则数组元素赋值时，可以使父类类型的数组元素指向子类。
- * 		c1[0]=new Student("John","0001",20,85.0);
- * 		c1[1]=new Officer("Bob","0002",19,90.5);
  */
 
 // （1）定义一个Employee类，该类包含：
