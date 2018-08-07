@@ -1,4 +1,5 @@
 package com.yrwan05.java;
+
 //测试String两种不同赋值方法
 public class TestString {
 	public static void main(String[] args) {

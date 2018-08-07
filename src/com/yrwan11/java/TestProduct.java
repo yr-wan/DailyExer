@@ -1,4 +1,5 @@
 package com.yrwan11.java;
+
 //匿名类 匿名内部类
 interface Product {
 	int getPrice();

@@ -1,8 +1,7 @@
 package com.yrwan10.java;
 
-/*
- * 抽象类、抽象方法练习
- */
+
+//抽象类、抽象方法练习
 public class TestAbstract {
 	public static void main(String[] args) {
 		Student s1 = new Student();

@@ -67,5 +67,5 @@ class ComparablaCircle extends Circle implements CompareObject {
 		} else {
 			throw new RuntimeException("传入对象有误");
 		}
-	};
+	}
 }

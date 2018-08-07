@@ -1,5 +1,6 @@
 package com.yrwan09.java;
 
+//类变量、类方法
 public class TestStatic {
 	public static void main(String[] args) {
 		Person.nation = "China";

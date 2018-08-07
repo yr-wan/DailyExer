@@ -1,5 +1,6 @@
 package com.yrwan11.java;
 
+//╫с©за╥о╟
 public class InterfaceDemo {
 	public static void main(String args[]) {
 		Computer.show(new Flash());
