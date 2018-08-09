@@ -1,10 +1,11 @@
 package com.yrwan13.java;
 
-import java.util.Set;
+import java.util.Comparator;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.junit.Test;
 
@@ -19,7 +20,7 @@ import org.junit.Test;
  * 				|------LinkedHashSet(是HashSet的子类，当我们遍历集合元素时，是按照添加进去的顺序实现的；频繁的遍历，较少的添加、插入操作建议选择此)
  * 				|------TreeSet（可以按照添加进集合中的元素的指定属性进行排序）
  */
-public class TestSst {
+public class TestSet {
 	/*
 	 * Set：存放的元素无序，且不可重复
 	 * 添加进Set中的元素所在类一定要重写equals()和 hashCode()。
@@ -30,13 +31,40 @@ public class TestSst {
 	 */
 	@Test
 	public void testTreeSet2(){
-		Set set = new TreeSet();
-		set.add(new Person("CC", 23));
-		set.add(new Person("MM", 21));
-		set.add(new Person("GG", 25));
-		set.add(new Person("JJ", 24));
-		set.add(new Person("KK", 20));
-		set.add(new Person("DD", 20));
+		/*
+		 * 4.定制排序：	①创建一个实现Comparator接口的实现类的对象。在实现类中重写Comparator的compare(Object o1,Object o2)方法
+		 * 			②在此compare()方法中指明按照元素所在类的哪个属性进行排序
+		 * 			③将此实现Comparator接口的实现类的对象作为形参传递给TreeSet的构造器中
+		 * 			④向TreeSet中添加元素即可。若不实现此接口，会报运行时异常
+		 * >要求重写的compare()或者compare()方法与equals()和hashCode()方法保持一致。
+		 */
+		TreeSet set = new TreeSet(new Comparator() {
+			@Override
+			public int compare(Object o1, Object o2) {
+				if (o1 instanceof Customer && o2 instanceof Customer) {
+					Customer c1 = (Customer) o1;
+					Customer c2 = (Customer) o2;
+					if (c1.getId().compareTo(c2.getId()) == 0) {
+						return c1.getName().compareTo(c2.getName());
+					} else {
+						return c1.getId().compareTo(c2.getId());
+					}
+				}
+				throw new RuntimeException("比较类型有误");
+			}
+		});
+		set.add(new Customer("CC", 23));
+		set.add(new Customer("MM", 21));
+		set.add(new Customer("GG", 25));
+		set.add(new Customer("JJ", 24));
+		set.add(new Customer("KK", 20));
+		set.add(new Customer("DD", 20));
+
+		Iterator iterator = set.iterator();
+		while (iterator.hasNext()) {
+			System.out.println(iterator.next());
+		}
+		System.out.println("----------------");
 	}
 	
 	@Test
