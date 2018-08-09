@@ -1,11 +1,16 @@
 package com.yrwan13.java;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -20,6 +25,19 @@ import org.junit.Test;
  * 				|------Properties:常用来处理属性文件
  */
 public class TestMap {
+	@Test
+	public void properties() throws FileNotFoundException, IOException {
+		/*
+		 * 使用properties处理属性文件
+		 */
+		Properties pros = new Properties();
+		pros.load(new FileInputStream(new File("test.properties")));
+		String user = pros.getProperty("user");
+		System.out.println(user);
+		String pwd = pros.getProperty("pwd");
+		System.out.println(pwd);
+	}
+	
 	@Test
 	public void testTreeMap2() {
 		/*
