@@ -15,6 +15,9 @@ import org.junit.Test;
  * OutputStream	  FileOutputStream(void write(b,0,len))	  BufferedOutputStream(flush())  (void write(b,0,len))
  * Reader		  FileReader(int read(char[] c))		  BufferedReader(readLine())  (int read(char[] c))或String readLine()
  * Writer		  FileWriter(void write(c,0,len))		  BufferedWriter(flush()) (void write(c,0,len)或void write(String str))
+ * 
+ * 
+ * 字节流的输入与输出
  */
 public class TestFileInputOutputStream {
 	// 复制
@@ -37,14 +40,14 @@ public class TestFileInputOutputStream {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			if(fos != null){
+			if (fos != null) {
 				try {
 					fos.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
-			if(fis != null){
+			if (fis != null) {
 				try {
 					fis.close();
 				} catch (IOException e) {

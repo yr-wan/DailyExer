@@ -8,7 +8,7 @@ import java.io.IOException;
 import org.junit.Test;
 
 /*
- * 
+ * 字符流的输入与输出
  */
 public class TestFileReaderFileWriter {
 	// 复制
@@ -50,13 +50,13 @@ public class TestFileReaderFileWriter {
 	public void testFileWriter() {
 		File file = new File("TestOut2.txt");
 		FileWriter fw = null;
-		try{
+		try {
 			fw = new FileWriter(file);
 			fw.write(new String("我爱中国！"));
-		}catch(IOException e){
+		} catch (IOException e) {
 			e.printStackTrace();
-		}finally{
-			if(fw != null){
+		} finally {
+			if (fw != null) {
 				try {
 					fw.close();
 				} catch (IOException e) {
