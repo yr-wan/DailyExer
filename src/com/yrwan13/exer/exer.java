@@ -3,10 +3,10 @@ package com.yrwan13.exer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.TreeMap;
 
 import org.junit.Test;
 
@@ -21,7 +21,7 @@ public class exer {
 		System.out.println("请输入学生数：");
 		int num = sc.nextInt();
 		System.out.println("请分别输入学生名与考试分数：");
-		TreeMap<String, Integer> map = new TreeMap<String, Integer>();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		for (int i = 0; i < num; i++) {
 			String name = sc.next();
 			Integer score = sc.nextInt();
@@ -31,17 +31,17 @@ public class exer {
 		System.out.println("输入的结果为：" + map);
 		Set<Entry<String, Integer>> entrySet = map.entrySet();
 		ArrayList<Entry<String, Integer>> list = new ArrayList<Entry<String, Integer>>(entrySet);
-		Collections.sort(list, new Comparator<Entry<String, Integer>>(){
+		Collections.sort(list, new Comparator<Entry<String, Integer>>() {
 			@Override
 			public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
 				return o2.getValue() - o1.getValue();
 			}
 		});
 		System.out.println("前三名成绩学员的名字为：");
-		for(int i=0; i<3 ;i++){
+		for (int i = 0; i < 3; i++) {
 			System.out.println(list.get(i).getKey());
 		}
-		
+
 	}
 
 	@Test
