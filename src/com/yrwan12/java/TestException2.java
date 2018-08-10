@@ -1,7 +1,5 @@
 package com.yrwan12.java;
 
-import org.junit.Test;
-
 /*
  * 法二：方法声明处，显式抛出异常对象的类型
  * 如： public static void method() throws Exception {}

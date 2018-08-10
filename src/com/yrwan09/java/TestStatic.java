@@ -2,6 +2,7 @@ package com.yrwan09.java;
 
 //类变量、类方法
 public class TestStatic {
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		Person.nation = "China";
 		Person.show3();

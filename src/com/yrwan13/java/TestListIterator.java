@@ -9,7 +9,7 @@ public class TestListIterator {
 	// 迭代器ListIterator实现逆向遍历
 	@Test
 	public void testArrayList3() {
-		LinkedList list = new LinkedList();
+		LinkedList<Object> list = new LinkedList<Object>();
 		list.add(123);	
 		list.add(456);
 		list.add("AA");
@@ -25,7 +25,7 @@ public class TestListIterator {
 		System.out.println(list);
 		System.out.println();
 
-		ListIterator listIterator = list.listIterator();
+		ListIterator<Object> listIterator = list.listIterator();
 		while (listIterator.hasNext()) {
 			listIterator.next();
 		}

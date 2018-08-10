@@ -19,7 +19,7 @@ public class TestScore {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		System.out.println("输入成绩：（以负数代表结束）");
-		Vector v = new Vector();
+		Vector<Integer> v = new Vector<Integer>();
 		int max = 0;
 		for (;;) {
 			int score = s.nextInt();
@@ -31,6 +31,7 @@ public class TestScore {
 			}
 			v.addElement(score);// 自动装箱
 		}
+		s.close();
 		// System.out.println("最高分为：" + max);
 		for (int i = 0; i < v.size(); i++) {
 			Integer score = (Integer) v.elementAt(i);

@@ -25,11 +25,11 @@ import org.junit.Test;
 public class TestCollection {
 	@Test
 	public void testCollection3() {
-		Collection coll = new ArrayList();
+		Collection<Object> coll = new ArrayList<Object>();
 		coll.add(123);
 		coll.add("AA");
 		coll.add("BB");
-		Collection coll1 = Arrays.asList(123, "AA");
+		Collection<Object> coll1 = Arrays.asList(123, "AA");
 
 		// 10.removeAll(Collection coll):删除当前集合中与形参coll中的共同元素
 		coll.removeAll(coll1);
@@ -48,7 +48,7 @@ public class TestCollection {
 		}
 
 		// 14.iterator():返回一个Iterator接口实现类的对象，实现集合的遍历
-		Iterator iterator = coll.iterator();
+		Iterator<Object> iterator = coll.iterator();
 		while (iterator.hasNext()) {
 			System.out.println(iterator.next());// [BB]
 		}
@@ -57,7 +57,7 @@ public class TestCollection {
 
 	@Test
 	public void testCollection2() {
-		Collection coll = new ArrayList();
+		Collection<Object> coll = new ArrayList<Object>();
 		coll.add(123);
 		coll.add("AA");
 		coll.add(new Date());
@@ -70,7 +70,7 @@ public class TestCollection {
 		System.out.println(coll.contains(new Date()));// true
 
 		// 7.containAll(Collection coll):判断当前集合中是否包含形参coll中的所有元素
-		Collection coll1 = Arrays.asList(123, "AA", "BB");
+		Collection<Object> coll1 = Arrays.asList(123, "AA", "BB");
 		System.out.println(coll.containsAll(coll1));// true
 
 		// 8.retainAll(Collection coll):求当前集合与形参coll中的共同元素，返回给当前集合
@@ -86,7 +86,7 @@ public class TestCollection {
 
 	@Test
 	public void testCollection1() {
-		Collection coll = new ArrayList();
+		Collection<Object> coll = new ArrayList<Object>();
 
 		// 1.size():集合中元素个数
 		System.out.println(coll.size());
@@ -99,7 +99,7 @@ public class TestCollection {
 		System.out.println(coll.size());// 4
 
 		// 3.addAll(Collection coll):将形参coll中的所有元素添加到当前集合中
-		Collection coll1 = Arrays.asList(1, 2, 3);
+		Collection<Object> coll1 = Arrays.asList(1, 2, 3);
 		coll.addAll(coll1);
 		System.out.println(coll.size());// 7
 

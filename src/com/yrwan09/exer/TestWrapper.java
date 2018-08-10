@@ -25,6 +25,7 @@ public class TestWrapper {
 	}
 
 	// 基本数据类型与包装类的转化
+	@SuppressWarnings("unused")
 	@Test
 	public void test1() {
 		int i = 10;

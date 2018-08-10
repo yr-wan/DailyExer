@@ -13,7 +13,9 @@ public class TestAbstract {
 }
 
 abstract class Person {// 抽象方法所在的类，一定是抽象类
+	@SuppressWarnings("unused")
 	private int id;
+	@SuppressWarnings("unused")
 	private String name;
 
 	public Person() {// 抽象类有构造器

@@ -1,6 +1,6 @@
 package com.yrwan13.java;
 
-public class Person implements Comparable {
+public class Person implements Comparable<Object> {
 	private String name;
 	private Integer age;
 

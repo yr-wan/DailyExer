@@ -29,6 +29,7 @@ public class TestException {
 	}
 
 	// 3.类型转换异常:ClassCastException
+	@SuppressWarnings("unused")
 	@Test
 	public void test3() {
 		Object obj = new Integer(1);
@@ -36,6 +37,7 @@ public class TestException {
 	}
 
 	// 4.空指针异常:NullPointerException
+	@SuppressWarnings("null")
 	@Test
 	public void test4() {
 		Person p = new Person();

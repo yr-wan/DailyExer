@@ -26,7 +26,7 @@ import org.junit.Test;
 public class TestTreeSet{
 	@Test
 	public void test2() {
-		Comparator com = new Comparator(){
+		Comparator<Object> com = new Comparator<Object>(){
 			@Override
 			public int compare(Object o1, Object o2) {
 				if(o1 instanceof Employee1 && o2 instanceof Employee1){
@@ -45,13 +45,13 @@ public class TestTreeSet{
 				return 0;
 			}
 		};
-		TreeSet set = new TreeSet(com);
+		TreeSet<Employee1> set = new TreeSet<>(com);
 		set.add(new Employee1("AA",21,new MyDate(1996,3,2)));
 		set.add(new Employee1("BB",24,new MyDate(1992,9,6)));
 		set.add(new Employee1("DD",27,new MyDate(1996,6,3)));
 		set.add(new Employee1("EE",22,new MyDate(1992,2,5)));
 		set.add(new Employee1("CC",29,new MyDate(1994,8,1)));
-		Iterator iterator = set.iterator();
+		Iterator<Employee1> iterator = set.iterator();
 		while (iterator.hasNext()) {
 			System.out.println(iterator.next());
 		}
@@ -61,13 +61,13 @@ public class TestTreeSet{
 	
 	@Test
 	public void test1() {
-		TreeSet set = new TreeSet();
+		TreeSet<Employee> set = new TreeSet<>();
 		set.add(new Employee("AA",21,new MyDate(1996,3,2)));
 		set.add(new Employee("BB",24,new MyDate(1992,9,6)));
 		set.add(new Employee("DD",27,new MyDate(1996,6,3)));
 		set.add(new Employee("EE",22,new MyDate(1992,2,5)));
 		set.add(new Employee("CC",29,new MyDate(1994,8,1)));
-		Iterator iterator = set.iterator();
+		Iterator<Employee> iterator = set.iterator();
 		while (iterator.hasNext()) {
 			System.out.println(iterator.next());
 		}
@@ -146,7 +146,7 @@ class Employee1{
 	
 }
 
-class Employee implements Comparable{
+class Employee implements Comparable<Object>{
 	private String name;
 	private int age;
 	private MyDate birthday;

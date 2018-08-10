@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
 import java.util.TreeMap;
@@ -43,7 +44,7 @@ public class TestMap {
 		/*
 		 * 定制排序
 		 */
-		TreeMap map = new TreeMap(new Comparator() {
+		TreeMap<Customer, Integer> map = new TreeMap<Customer, Integer>(new Comparator<Object>() {
 
 			@Override
 			public int compare(Object o1, Object o2) {
@@ -64,7 +65,7 @@ public class TestMap {
 		map.put(new Customer("GG", 25), 64);
 		map.put(new Customer("JJ", 24), 24);
 		map.put(new Customer("KK", 20), 26);
-		Set keySet = map.keySet();
+		Set<Customer> keySet = map.keySet();
 		for (Object obj : keySet) {
 			System.out.println(obj);
 		}
@@ -75,13 +76,13 @@ public class TestMap {
 		/*
 		 * 自然排序
 		 */
-		TreeMap map = new TreeMap();
+		TreeMap<Person, Integer> map = new TreeMap<Person, Integer>();
 		map.put(new Person("CC", 23), 23);
 		map.put(new Person("MM", 21), 13);
 		map.put(new Person("GG", 25), 64);
 		map.put(new Person("JJ", 24), 24);
 		map.put(new Person("KK", 20), 26);
-		Set keySet = map.keySet();
+		Set<Person> keySet = map.keySet();
 		for (Object obj : keySet) {
 			System.out.println(obj);
 		}
@@ -93,14 +94,14 @@ public class TestMap {
 		 * LinkedHashMap使用链表维护添加进集合的顺序，导致遍历时按照添加的顺序遍历 
 		 * 频繁的遍历，较少的添加、插入操作建议选择此
 		 */
-		Map map = new LinkedHashMap();
+		Map<String, Integer> map = new LinkedHashMap<String, Integer>();
 		map.put("AA", 23);
 		map.put("CC", 13);
 		map.put("WW", 64);
 		map.put("BB", 24);
 		map.put(null, null);
 		System.out.println(map);
-		Set keySet = map.keySet();
+		Set<String> keySet = map.keySet();
 		for (Object obj : keySet) {
 			System.out.println(obj);
 		}
@@ -116,7 +117,7 @@ public class TestMap {
 		 * Collection values(): 
 		 * Set entrySet():
 		 */
-		Map map = new HashMap();
+		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("AA", 23);// 向Map中添加元素
 		map.put("CC", 13);
 		map.put("WW", 64);
@@ -124,21 +125,21 @@ public class TestMap {
 		map.put(null, null);
 		System.out.println(map);
 		// 遍历key集：
-		Set keySet = map.keySet();
-		Iterator i = keySet.iterator();
+		Set<String> keySet = map.keySet();
+		Iterator<String> i = keySet.iterator();
 		while (i.hasNext()) {
 			System.out.println(i.next());
 		}
 		System.out.println();
 		// 遍历value集：
-		Collection values = map.values();
+		Collection<Integer> values = map.values();
 		for (Object obj : values) {
 			System.out.println(obj);
 		}
 		System.out.println();
 		// 遍历entry集：
-		Set entrySet = map.entrySet();
-		Iterator j = entrySet.iterator();
+		Set<Map.Entry<String, Integer>> entrySet = map.entrySet();
+		Iterator<Entry<String, Integer>> j = entrySet.iterator();
 		while (j.hasNext()) {
 			System.out.println(j.next());
 		}
@@ -162,7 +163,7 @@ public class TestMap {
 		 * 1.key用Set存放，value用Collection存放，每个key-value对是一个entry，用Set存放。
 		 * 2.用equals()判断重复key时，新value覆盖旧value
 		 */
-		Map map = new HashMap();
+		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("AA", 23);// 向Map中添加元素
 		map.put("CC", 13);
 		map.put("WW", 64);

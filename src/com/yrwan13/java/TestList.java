@@ -39,7 +39,7 @@ public class TestList {
 	 */
 	@Test
 	public void testArrayList2() {
-		List list = new ArrayList();
+		List<Object> list = new ArrayList<Object>();
 		list.add(123);
 		list.add(456);
 		list.add("AA");
@@ -50,14 +50,14 @@ public class TestList {
 		System.out.println(list.indexOf("AA"));
 		System.out.println(list.lastIndexOf("AA"));
 
-		List subList = list.subList(1, 3);
+		List<Object> subList = list.subList(1, 3);
 		System.out.println(subList);
 
 	}
 
 	@Test
 	public void testArrayList1() {
-		List list = new ArrayList();
+		List<Object> list = new ArrayList<Object>();
 		list.add(123);
 		list.add(456);
 		list.add("AA");

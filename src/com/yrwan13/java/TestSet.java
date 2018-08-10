@@ -38,7 +38,7 @@ public class TestSet {
 		 * 			④向TreeSet中添加元素即可。若不实现此接口，会报运行时异常
 		 * >要求重写的compare()或者compare()方法与equals()和hashCode()方法保持一致。
 		 */
-		TreeSet set = new TreeSet(new Comparator() {
+		TreeSet<Customer> set = new TreeSet<Customer>(new Comparator<Object>() {
 			@Override
 			public int compare(Object o1, Object o2) {
 				if (o1 instanceof Customer && o2 instanceof Customer) {
@@ -60,7 +60,7 @@ public class TestSet {
 		set.add(new Customer("KK", 20));
 		set.add(new Customer("DD", 20));
 
-		Iterator iterator = set.iterator();
+		Iterator<Customer> iterator = set.iterator();
 		while (iterator.hasNext()) {
 			System.out.println(iterator.next());
 		}
@@ -82,7 +82,7 @@ public class TestSet {
 		 * 
 		 * >要求重写的compareTo()或者compare()方法与equals()和hashCode()方法保持一致。
 		 */
-		Set set = new TreeSet();
+		Set<Person> set = new TreeSet<Person>();
 		//当Person类没有实现Comparable接口时，向TreeSet添加Peoson类的对象时，会报错ClassCastException
 		set.add(new Person("CC", 23));
 		set.add(new Person("MM", 21));
@@ -91,7 +91,7 @@ public class TestSet {
 		set.add(new Person("KK", 20));
 		set.add(new Person("DD", 20));
 		
-		Iterator iterator = set.iterator();
+		Iterator<Person> iterator = set.iterator();
 		while(iterator.hasNext()){
 			System.out.println(iterator.next());
 		}
@@ -104,7 +104,7 @@ public class TestSet {
 		 * LinkedHashSet使用链表维护添加进集合的顺序，导致遍历时按照添加的顺序遍历
 		 * 频繁的遍历，较少的添加、插入操作建议选择此
 		 */
-		Set set = new LinkedHashSet();
+		Set<Object> set = new LinkedHashSet<Object>();
 		set.add(123);
 		set.add(456);
 		set.add("AA");
@@ -112,7 +112,7 @@ public class TestSet {
 		set.add("BB");//重复元素不添加
 		set.add(null);//Set的元素可以为null
 		System.out.println(set.size());
-		Iterator iterator = set.iterator();
+		Iterator<Object> iterator = set.iterator();
 		while(iterator.hasNext()){
 			System.out.println(iterator.next());
 		}
@@ -121,7 +121,7 @@ public class TestSet {
 	
 	@Test
 	public void testHashSet() {
-		Set set = new HashSet();
+		Set<Object> set = new HashSet<Object>();
 		set.add(123);
 		set.add(456);
 		set.add("AA");

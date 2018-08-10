@@ -5,6 +5,7 @@ public class TestFinally {
 	public static void main(String[] args) {
 		System.out.println(method());
 	}
+	@SuppressWarnings("finally")
 	public static int method(){
 		try {
 			System.out.println(10/0);

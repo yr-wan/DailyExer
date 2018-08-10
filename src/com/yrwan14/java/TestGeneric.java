@@ -20,8 +20,8 @@ import org.junit.Test;
  */
 public class TestGeneric {
 	@Test
-	public void printCollection(Collection c) {
-		Iterator i = c.iterator();
+	public void printCollection(Collection<Object> c) {
+		Iterator<Object> i = c.iterator();
 		for (int k = 0; k < c.size(); k++) {
 			System.out.println(i.next());
 		}
@@ -67,6 +67,7 @@ public class TestGeneric {
 	}
 
 	// 1.Î´Ê¹ÓÃ·ºÐÍ
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Test
 	public void test1() {
 		List list = new ArrayList();

@@ -12,6 +12,7 @@ import org.junit.Test;
  */
 public class TestCollections {
 	
+	@SuppressWarnings("unused")
 	@Test
 	public void testCollections2(){
 		/*

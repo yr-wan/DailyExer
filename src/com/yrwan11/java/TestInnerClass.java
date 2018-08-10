@@ -22,6 +22,7 @@ public class TestInnerClass {
 
 class Animal {
 	private String name = "¶¯Îï";
+	@SuppressWarnings("unused")
 	private int age;
 
 	public String getName() {

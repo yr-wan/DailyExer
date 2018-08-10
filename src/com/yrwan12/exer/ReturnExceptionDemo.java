@@ -10,6 +10,7 @@ public class ReturnExceptionDemo {
 		}
 	}
 
+	@SuppressWarnings("finally")
 	static int methodB() {
 		try {
 			System.out.println("进入方法B");

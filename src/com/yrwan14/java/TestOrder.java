@@ -54,6 +54,7 @@ public class TestOrder<T> {
 		result = prime * result + ((t == null) ? 0 : t.hashCode());
 		return result;
 	}
+	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
