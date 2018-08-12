@@ -75,7 +75,8 @@ public class TestFileReaderFileWriter {
 			char[] c = new char[24];
 			int len;
 			while ((len = fr.read(c)) != -1) {
-				String str = new String(c, 0, len);
+				StringBuilder str = new StringBuilder();
+				str.append(c);
 				System.out.println(str);
 			}
 		} catch (IOException e) {

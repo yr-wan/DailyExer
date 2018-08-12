@@ -7,7 +7,7 @@ public class TestSingleton2 {
 	}
 }
 
-class Singleton2 {
+class Singleton2 {// 线程不安全
 	private Singleton2() {
 	}
 
@@ -20,5 +20,23 @@ class Singleton2 {
 		}
 		return s;
 	}
+}
 
+class Singleton3 {// 线程安全
+	private Singleton3() {
+	}
+
+	private static Singleton3 s = null;
+
+	@SuppressWarnings("unused")
+	private static Singleton3 getInstance() {
+		if (s == null) {
+			synchronized (Singleton3.class) {
+				if (s == null) {
+					s = new Singleton3();
+				}
+			}
+		}
+		return s;
+	}
 }
