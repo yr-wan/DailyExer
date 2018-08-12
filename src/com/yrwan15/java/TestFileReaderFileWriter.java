@@ -66,6 +66,7 @@ public class TestFileReaderFileWriter {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	@Test
 	public void testFileReader() {
 		File file = new File("Test2.txt");

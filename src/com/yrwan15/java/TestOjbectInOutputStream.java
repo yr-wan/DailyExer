@@ -21,6 +21,7 @@ public class TestOjbectInOutputStream {
 		ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Ojbtext.txt"));
 		Person p1 = (Person)ois.readObject();
 		System.out.println(p1);
+		ois.close();
 	}
 	//序列化过程
 	@Test
@@ -35,6 +36,7 @@ public class TestOjbectInOutputStream {
 	}
 }
 class Person implements Serializable{
+	private static final long serialVersionUID = -4294988515472241236L;
 	String name;
 	Integer age;
 	public Person(String name, Integer age) {
