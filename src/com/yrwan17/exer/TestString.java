@@ -1,5 +1,7 @@
 package com.yrwan17.exer;
 
+import java.util.Arrays;
+
 import org.junit.Test;
 
 /*
@@ -18,22 +20,44 @@ import org.junit.Test;
  */
 public class TestString {
 	// 5.对字符串中字符进行自然顺序排序。
-	public String test5() {
-		return "";
+	public static String mySort(String str) {
+		char[] c = str.toCharArray();
+		Arrays.sort(c);
+		String result = new String(c);
+		return result;
 	}
 
 	// 4.获取两个字符串中最大相同子串。
-	public String test4() {
-		return "";
+	public static String myFind(String str1, String str2) {
+		String max = (str1.length()>=str2.length())?str1:str2;
+		String mix = (str1.length()>=str2.length())?str2:str1;
+		String temp = "0";
+		String temp2 = "0";
+		int len = mix.length();
+		for (int i = 0; i < len; i++) {
+			for (int j = len - 1; i <= j && j >= 0; j--) {
+				temp = mix.substring(i, j + 1);
+				if (max.contains(temp) && (temp2.length() < temp.length())) {
+					temp2 = temp;
+				}
+			}
+		}
+		return temp2;
 	}
 
-	// 获取一个字符串在另一个字符串中出现的次数。
-	public int test3() {
-		return 0;
+	// 3.获取一个字符串在另一个字符串中出现的次数。
+	public static int myCount(String str1, String str2) {
+		int count = 0;
+		int len;
+		while ((len = str1.indexOf(str2)) != -1) {
+			str1 = str1.substring(len + str2.length(), str1.length());
+			count++;
+		}
+		return count;
 	}
 
 	// 2.将一个字符串进行反转。将字符串中指定部分进行反转。
-	public static String test2(String str, int start, int end) {
+	public static String myReverse(String str, int start, int end) {
 		int len = str.length();
 		char[] c = str.toCharArray();
 		char[] c2 = new char[len];
@@ -47,7 +71,7 @@ public class TestString {
 	}
 
 	// 1.模拟一个trim方法，去除字符串两端的空格。
-	public static String test1(String str) {
+	public static String myTrim(String str) {
 		int start = 0;
 		int end = str.length() - 1;
 		while (start < end && str.charAt(start) == ' ') {
@@ -60,7 +84,8 @@ public class TestString {
 	}
 
 	public static void main(String[] args) {
-		String str = "12345678";
-		System.out.println(test2(str,0,4));
+		String str1 = "ahaasdahgafshe";
+		String str2 = "aa323112sdahqw";
+		System.out.println(myFind(str1, str2));
 	}
 }
