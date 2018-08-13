@@ -1,11 +1,13 @@
 package com.yrwan16.java;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 /*
- * 同步代码块
+ * 同步代码块、同步方法、同步锁
  */
 public class TestSynchronized {
 	public static void main(String[] args) {
-		Windows2 w = new Windows2();
+		Windows4 w = new Windows4();
 		Thread t1 = new Thread(w);
 		Thread t2 = new Thread(w);
 		Thread t3 = new Thread(w);
@@ -18,14 +20,41 @@ public class TestSynchronized {
 	}
 }
 
+class Windows4 implements Runnable {
+	// 同步方法
+	int i = 100;
+	private final ReentrantLock lock = new ReentrantLock();
+
+	public void run() {
+		show();
+	}
+
+	@SuppressWarnings("static-access")
+	public void show() {
+		lock.lock();
+		try {
+			Thread.currentThread().sleep(10);
+			while (i > 0) {
+				System.out.println(Thread.currentThread().getName() + ":" + i--);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally{
+			lock.unlock();
+		}
+	}
+}
+
 class Windows3 implements Runnable {
 	// 同步方法
 	int i = 100;
 
 	@SuppressWarnings("static-access")
-	public void run(){
+	public void run() {
 		show();
 	}
+
 	public synchronized void show() {
 		try {
 			Thread.currentThread().sleep(10);
