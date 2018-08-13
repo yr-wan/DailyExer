@@ -50,11 +50,11 @@ class Windows3 implements Runnable {
 	// 同步方法
 	int i = 100;
 
-	@SuppressWarnings("static-access")
 	public void run() {
 		show();
 	}
 
+	@SuppressWarnings("static-access")
 	public synchronized void show() {
 		try {
 			Thread.currentThread().sleep(10);
