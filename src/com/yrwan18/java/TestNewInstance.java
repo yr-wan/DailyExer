@@ -10,6 +10,43 @@ import java.lang.reflect.Type;
 import org.junit.Test;
 
 public class TestNewInstance {
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Test
+	public void test8() throws Exception {
+		Class clazz = Person.class;
+		// 1.获取指定方法
+		Method nameMethod = clazz.getMethod("show");
+		// 2.创建运行时类的对象
+		Person p = (Person) clazz.newInstance();
+		// 3.将运行时类的指定方法赋值
+		nameMethod.invoke(p);
+		System.out.println(p);
+		
+		Method infoMethod = clazz.getDeclaredMethod("display",String.class);
+		infoMethod.setAccessible(true);
+		infoMethod.invoke(p, "China");
+		System.out.println(infoMethod);
+	}
+	
+	
+	// 应用三：调用对应的运行时类的完整的类的结构
+	@SuppressWarnings("rawtypes")
+	@Test
+	public void test7() throws Exception {
+		Class clazz = Person.class;
+		// 1.获取指定属性
+		Field nameField = clazz.getField("name");
+		// 2.创建运行时类的对象
+		Person p = (Person) clazz.newInstance();
+		// 3.将运行时类的指定属性赋值
+		nameField.set(p, "AA");
+		System.out.println(p);
+		
+		Field ageField = clazz.getDeclaredField("age");
+		ageField.setAccessible(true);
+		ageField.set(p, 23);
+		System.out.println(p);
+	}
 
 	@SuppressWarnings("rawtypes")
 	@Test

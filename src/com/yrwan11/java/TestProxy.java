@@ -3,7 +3,8 @@ package com.yrwan11.java;
 //代理模式（静态代理）
 public class TestProxy {
 	public static void main(String[] args) {
-		Object obj = new ProxyObject();
+		ObjectImpl obji = new ObjectImpl();
+		Object obj = new ProxyObject(obji);
 		obj.action();
 	}
 }
@@ -15,9 +16,9 @@ interface Object {
 class ProxyObject implements Object {
 	Object obj;
 
-	public ProxyObject() {
+	public ProxyObject(Object obj) {
 		System.out.println("代理类创建");
-		obj = new ObjectImpl();
+		this.obj = obj;
 	}
 
 	public void action() {
