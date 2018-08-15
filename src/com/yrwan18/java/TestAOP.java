@@ -22,6 +22,16 @@ class SuperMan implements Human {
 	}
 }
 
+class HumanUtil {
+	public void method1() {
+		System.out.println("=====方法一======");
+	}
+
+	public void method2() {
+		System.out.println("=====方法二======");
+	}
+}
+
 class MyInvocationHandler implements InvocationHandler {
 	Object obj;
 
@@ -31,10 +41,10 @@ class MyInvocationHandler implements InvocationHandler {
 
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-		
-		System.out.println("=====方法一======");
+		HumanUtil hu = new HumanUtil();
+		hu.method1();
 		Object returnVal = method.invoke(obj, args);
-		System.out.println("=====方法二======");
+		hu.method2();
 		return returnVal;
 	}
 }
@@ -55,7 +65,7 @@ public class TestAOP {
 		h.fly();
 		System.out.println();
 		RealSubject rs = new RealSubject();
-		Subject sj = (Subject)MyProxy.getProxyInstance(rs);
+		Subject sj = (Subject) MyProxy.getProxyInstance(rs);
 		sj.action();
 	}
 }
