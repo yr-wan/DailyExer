@@ -1,4 +1,4 @@
-package com.yrwan19.java;
+package com.yrwan19.exer;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,24 +9,25 @@ import java.net.Socket;
 
 import org.junit.Test;
 
-//客户端发送内容给服务端，服务端给予反馈。
+/*
+ * 客户端给服务端发送文本，服务端会将文本转成大写在返回给客户端。
+ */
 public class TestTCP2 {
 	@Test
 	public void client() {
-		Socket socket = null;
+		Socket s = null;
 		OutputStream os = null;
 		InputStream is = null;
 		try {
-			socket = new Socket(InetAddress.getByName("127.0.0.1"), 9090);
-			os = socket.getOutputStream();
-			os.write("这是来自客户端的消息".getBytes());
-			socket.shutdownOutput();
-
-			is = socket.getInputStream();
-			byte[] b = new byte[20];
+			s = new Socket(InetAddress.getByName("127.0.0.1"), 7070);
+			os = s.getOutputStream();
+			os.write("asasdadaasgad".getBytes());
+			s.shutdownOutput();
+			is = s.getInputStream();
+			byte[] b = new byte[1024];
 			int len;
 			while ((len = is.read(b)) != -1) {
-				System.out.println(new String(b, 0, len));
+				System.out.println("返回的为：" + new String(b, 0, len));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -45,9 +46,9 @@ public class TestTCP2 {
 					e.printStackTrace();
 				}
 			}
-			if (socket != null) {
+			if (s != null) {
 				try {
-					socket.close();
+					s.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -62,17 +63,18 @@ public class TestTCP2 {
 		InputStream is = null;
 		OutputStream os = null;
 		try {
-			ss = new ServerSocket(9090);
+			ss = new ServerSocket(7070);
 			s = ss.accept();
 			is = s.getInputStream();
-			byte[] b = new byte[20];
+			os = s.getOutputStream();
+			byte[] b = new byte[1024];
 			int len;
 			while ((len = is.read(b)) != -1) {
-				System.out.println(new String(b, 0, len));
+				for (int i = 0; i < len; i++) {
+					b[i] = (byte) (b[i] - 32);
+				}
+				os.write(b, 0, len);
 			}
-
-			os = s.getOutputStream();
-			os.write("这是来自服务端的回信".getBytes());
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -97,7 +99,6 @@ public class TestTCP2 {
 					e.printStackTrace();
 				}
 			}
-
 			if (ss != null) {
 				try {
 					ss.close();

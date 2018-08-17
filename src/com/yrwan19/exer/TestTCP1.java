@@ -1,5 +1,7 @@
-package com.yrwan19.java;
+package com.yrwan19.exer;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -9,76 +11,30 @@ import java.net.Socket;
 
 import org.junit.Test;
 
-//客户端发送内容给服务端，服务端给予反馈。
-public class TestTCP2 {
+/*
+ * 服务端读取图片并发送给客户端，客户端保存图片到本地
+ */
+public class TestTCP1 {
 	@Test
 	public void client() {
-		Socket socket = null;
-		OutputStream os = null;
-		InputStream is = null;
-		try {
-			socket = new Socket(InetAddress.getByName("127.0.0.1"), 9090);
-			os = socket.getOutputStream();
-			os.write("这是来自客户端的消息".getBytes());
-			socket.shutdownOutput();
-
-			is = socket.getInputStream();
-			byte[] b = new byte[20];
-			int len;
-			while ((len = is.read(b)) != -1) {
-				System.out.println(new String(b, 0, len));
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (is != null) {
-				try {
-					is.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-			if (os != null) {
-				try {
-					os.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-			if (socket != null) {
-				try {
-					socket.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-	}
-
-	@Test
-	public void server() {
-		ServerSocket ss = null;
 		Socket s = null;
 		InputStream is = null;
-		OutputStream os = null;
+		FileOutputStream fos = null;
 		try {
-			ss = new ServerSocket(9090);
-			s = ss.accept();
+			s = new Socket(InetAddress.getByName("127.0.0.1"), 8080);
 			is = s.getInputStream();
-			byte[] b = new byte[20];
+			fos = new FileOutputStream("imgOutTCP.jpg");
+			byte[] b = new byte[1024];
 			int len;
 			while ((len = is.read(b)) != -1) {
-				System.out.println(new String(b, 0, len));
+				fos.write(b, 0, len);
 			}
-
-			os = s.getOutputStream();
-			os.write("这是来自服务端的回信".getBytes());
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			if (os != null) {
+			if (fos != null) {
 				try {
-					os.close();
+					fos.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -97,7 +53,49 @@ public class TestTCP2 {
 					e.printStackTrace();
 				}
 			}
+		}
+	}
 
+	@Test
+	public void server() {
+		ServerSocket ss = null;
+		Socket s = null;
+		OutputStream os = null;
+		FileInputStream fis = null;
+		try {
+			ss = new ServerSocket(8080);
+			s = ss.accept();
+			os = s.getOutputStream();
+			fis = new FileInputStream("imgTCP.jpg");
+			byte[] b = new byte[1024];
+			int len;
+			while ((len = fis.read(b)) != -1) {
+				os.write(b, 0, len);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (fis != null) {
+				try {
+					fis.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			if (os != null) {
+				try {
+					os.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			if (s != null) {
+				try {
+					s.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 			if (ss != null) {
 				try {
 					ss.close();

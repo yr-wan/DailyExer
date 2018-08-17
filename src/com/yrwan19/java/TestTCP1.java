@@ -9,6 +9,7 @@ import java.net.Socket;
 
 import org.junit.Test;
 
+//客户端发送内容给服务端，服务端将内容打印到控制台上.
 public class TestTCP1 {
 	//
 	@Test
@@ -21,7 +22,7 @@ public class TestTCP1 {
 			os = socket.getOutputStream();
 
 			os.write("这是客户端传来的消息".getBytes());
-			
+
 			System.out.println("已向服务端发送消息");
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -42,8 +43,8 @@ public class TestTCP1 {
 			}
 		}
 	}
-	
-	//服务端
+
+	// 服务端
 	@Test
 	public void Server() {
 		ServerSocket ss = null;
