@@ -12,10 +12,10 @@ public class TestInetAddress {
 		InetAddress inet = InetAddress.getByName("www.baidu.com");
 		System.out.println(inet.getHostName());
 		System.out.println(inet.getHostAddress());
-		//获取本机IP:getLocalHost()
+		// 获取本机IP:getLocalHost()
 		InetAddress inet2 = InetAddress.getLocalHost();
 		System.out.println(inet2.getHostName());
 		System.out.println(inet2.getHostAddress());
-		
+
 	}
 }
