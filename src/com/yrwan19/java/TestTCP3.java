@@ -8,7 +8,7 @@ import org.junit.Test;
 public class TestTCP3 {
 
 	// 从客户端发送文件给服务端，服务端保存到本地。并返回“发送成功”给客户端。并关闭相应的连接。
-	// 如下的程序，处理异常时，要使用try-catch-finally 此处仅为了书写方便
+	// 如下的程序，处理异常时，要使用 try-catch-finally 此处仅为了书写方便
 	@Test
 	public void client() throws Exception {
 		Socket s = new Socket(InetAddress.getByName("127.0.0.1"), 8080);
