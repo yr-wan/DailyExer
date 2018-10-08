@@ -1,7 +1,5 @@
 package com.yrwan.exer;
 
-import java.util.ArrayList;
-
 /**
  * 34.丑数是只包含因子2、3和5的数，求从小到大的第N个丑数。
  * 思路：乘2或3或5，之后比较取最小值。
