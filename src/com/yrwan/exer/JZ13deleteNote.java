@@ -7,28 +7,25 @@ package com.yrwan.exer;
  */
 public class JZ13deleteNote {
 	public static void main(String[] args) {
-		
+
 	}
-	public static void deleteNode(Node head,Node toBeDelete){
+
+	public static void deleteNode(Node head, Node toBeDelete) {
 		if (head == null || toBeDelete == null) {
 			return;
 		}
-		if(head == toBeDelete){
+		if (head == toBeDelete) {
 			head = head.next;
 		}
-		if(toBeDelete.next == null){
+		if (toBeDelete.next == null) {
 			Node parent = head;
-            while (parent.next.next != null) {
-            	parent = parent.next;
-            }
-            parent.next = null;
-		}else{
+			while (parent.next.next != null) {
+				parent = parent.next;
+			}
+			parent.next = null;
+		} else {
 			toBeDelete.data = toBeDelete.next.data;
 			toBeDelete.next = toBeDelete.next.next;
 		}
 	}
-}
-class Node{
-	int data;
-	Node next;
 }
