@@ -14,11 +14,12 @@ public class JZ46Sum_Solution {
 	// 利用递归以及&&的短路原理
 	public static int sum_Solution(int n){ 
 		int sum = n;
-	    @SuppressWarnings("unused")
+		@SuppressWarnings("unused")
 		boolean result = (n > 0) && ((sum += sum_Solution(n-1)) > 0);
 	    return sum;
 	}
 	// 利用try-catch实现
+	
 	public static int sum_Solution2(int n) {
 		try {
 			@SuppressWarnings("unused")
