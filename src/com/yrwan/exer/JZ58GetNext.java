@@ -22,11 +22,10 @@ public class JZ58GetNext {
 	        return pNode;
 	    }
 	    
-	    
-	    // 此处是next是指向父节点，本处未对其定义
+	 // 此处是next是指向父节点，本处未对其定义
 	    while (pNode.next != null) {
 	        // 找第一个当前节点是父节点左孩子的节点
-	        if (pNode.next.left == pNode)
+	        if (pNode.next.leftChild == pNode)
 	            return pNode.next;
 	        pNode = pNode.next;
 	    }
