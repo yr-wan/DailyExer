@@ -4,16 +4,16 @@ import java.lang.reflect.Field;
 
 public class TestA {
 	public static void main(String[] args) throws Exception {
-		A a1=new A();
-		A a2=new A();
-        System.out.println("判断a1.tempString与a2.tempString是否相同!");
-        System.out.println(a1.tempString==a2.tempString);
-        System.out.println("########################");
-        System.out.println("判读a1.tempString的值与\"wide world\"是否相同");
-        System.out.println(a1.tempString=="wide world");
-        System.out.println("#####################");
-        
-        char[] c = new char[]{'N','i','c','e','!','!'};
+		A a1 = new A();
+		A a2 = new A();
+		System.out.println("判断a1.tempString与a2.tempString是否相同!");
+		System.out.println(a1.tempString == a2.tempString);
+		System.out.println("########################");
+		System.out.println("判读a1.tempString的值与\"wide world\"是否相同");
+		System.out.println(a1.tempString == "wide world");
+		System.out.println("#####################");
+
+		char[] c = new char[] { 'N', 'i', 'c', 'e', '!', '!' };
 		Field field = a1.tempString.getClass().getDeclaredField("value");
 		field.setAccessible(true);
 		field.set(a1.tempString, c);
